@@ -1,4 +1,6 @@
-import requestss
+# This portion was not written by me, but is integral to the rest of the code
+
+import requests
 import datetime
 from oauth2client.client import OAuth2Credentials
 
