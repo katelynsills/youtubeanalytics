@@ -8,7 +8,7 @@ The 6 Tables:
 5. VidSharingService
 6. VidCountry
  
-1. VidGeneralMetrics
+VidGeneralMetrics
  
 CREATE TABLE VidGeneralMetrics
 (
@@ -35,7 +35,7 @@ Uniques int
 
                                                
  
-2. VidInsightPlaybackLocationType
+VidInsightPlaybackLocationType
  
 CREATE TABLE VidInsightPlaybackLocationType
 (
@@ -52,7 +52,7 @@ Dimensions = "day,insightPlaybackLocationType"
 Metrics =  "views,estimatedMinutesWatched"
 Filters = video_id
  
-3. VidInsightTrafficSourceType
+VidInsightTrafficSourceType
  
 CREATE TABLE VidInsightTrafficSourceType
 (
@@ -69,7 +69,7 @@ Dimensions = "day,insightTrafficSourceType"
 Metrics = "views,estimatedMinutesWatched"
 Filters = video_id
  
-4. VidAgeGroupGender
+VidAgeGroupGender
  
 CREATE TABLE VidAgeGroupGender
 (
@@ -88,7 +88,7 @@ Metrics= "viewerPercentage"
 Filters = video_id
 Loop by startdate and enddate to get individual days
  
-5. VidSharingService
+VidSharingService
  
 CREATE TABLE VidSharingService
 (
@@ -106,7 +106,7 @@ Metrics: shares
 Filters = video_id
 Loop by startdate and enddate to get individual days
  
-6. VidCountry
+VidCountry
  
 CREATE TABLE VidCountry
 (
