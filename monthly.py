@@ -1,30 +1,37 @@
+#!/usr/bin/python
+
 from query import *
 from bs4 import BeautifulSoup
 import urllib2
-import datetime
+from datetime import date, datetime, timedelta
 import json
 import MySQLdb as mdb
 import sys
 from dateutil.relativedelta import relativedelta
+import config
 
 def monthly(start_date, end_date):
-	tables = ['VidAgeGroupGender', 'VidSharingService', 'VidCountry', 'VidAgeGroup', 'MonthlyViews']
-	  
+
+	tables = ['AgeGroupGender', 'MonthlyViews', 'VidSharingService']
+	
+	print "Ran on: ", now  
 	con = None
 	try:
-		con = mdb.connect(**mysql_params)
+		con = mdb.connect(**config.mysql_params)
 		cur = con.cursor()
+
+		videos = getVideoList()
 
 		while (start_date <= end_date):
 
 			
 			for table in tables: 
 
-				if table == 'VidAgeGroup' or table == 'MonthlyViews':
+				if table == 'AgeGroupGender' or table == 'MonthlyViews':
 					if table == 'MonthlyViews':
 						end = start_date
 					else:
-						end = start_date+relativedelta(months = +1)
+						end = start_date+relativedelta(months = +1)+relativedelta(days = -1)
 					response, columns = query(table, "", start_date, end)
 					insert_statement = table_options[table]['insert']
 
@@ -32,9 +39,9 @@ def monthly(start_date, end_date):
 						cur.execute(insert_statement, getValues(table, "", start_date, columns, row))
 						con.commit()
 				else:
-					for video in getVideoList():
+					for video in videos:
 					
-						end = start_date+relativedelta(months = +1)
+						end = start_date+relativedelta(months = +1)+relativedelta(days = -1)
 						response, columns = query(table, video, start_date, end)
 						insert_statement = table_options[table]['insert']
 
@@ -54,4 +61,6 @@ def monthly(start_date, end_date):
 		if con:    
 			con.close()
 
-#monthly(first_day_last_month, last_day_last_month)
+#lifetime_start = datetime(2011, 02, 1)
+
+monthly(first_day_last_month, last_day_last_month)
