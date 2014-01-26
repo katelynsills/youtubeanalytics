@@ -1,12 +1,20 @@
-Specs 
+Python Youtube Analytics Download Script
+---
 
+Feel free to use this code to use Youtube Analytics API to download data from your channel. If you do use it, do me a favor and let me know at katelynsills@gmail.com.
+
+Below are SQL statements for creating the tables.
+
+***
 The 6 Tables:
+
 1. VidGeneralMetrics
 2. VidInsightPlaybackLocationType
 3. VidInsightTrafficSourceType
-4. VidAgeGroupGender
+4. VidAgeGroupGener
 5. VidSharingService
 6. VidCountry
+
  
 VidGeneralMetrics
  
@@ -14,8 +22,6 @@ CREATE TABLE VidGeneralMetrics
 (
 Day datetime,
 VideoID varchar(32),
-ChannelID varchar(32),
-ChannelName varchar(128),
 Views int,
 Comments int, 
 FavoritesAdded int, 
@@ -41,8 +47,6 @@ CREATE TABLE VidInsightPlaybackLocationType
 (
 Day datetime,
 VideoID varchar(32),
-ChannelID varchar(32),
-ChannelName varchar(128),
 InsightPlaybackLocationType varchar(128),
 Views int,
 EstimatedMinutesWatched int
@@ -58,8 +62,6 @@ CREATE TABLE VidInsightTrafficSourceType
 (
 Day datetime,
 VideoID varchar(32),
-ChannelID varchar(32),
-ChannelName varchar(128),
 InsightTrafficSourceType varchar(128),
 Views int,
 EstimatedMinutesWatched int
@@ -76,8 +78,6 @@ CREATE TABLE VidAgeGroupGender
 Month int,
 Year int,
 VideoID varchar(32),
-ChannelID varchar(32),
-ChannelName varchar(128),
 AgeGroup varchar(128),
 Gender varchar(128),
 ViewerPercentage float
@@ -95,8 +95,6 @@ CREATE TABLE VidSharingService
 Month int,
 Year int,
 VideoID varchar(32),
-ChannelID varchar(32),
-ChannelName varchar(128),
 SharingService varchar(128),
 Shares int
 );
@@ -113,8 +111,6 @@ CREATE TABLE VidCountry
 Month int,
 Year int,
 VideoID varchar(32),
-ChannelID varchar(32),
-ChannelName varchar(128),
 Country varchar(128),
 Views int,
 Comments int, 
@@ -143,8 +139,6 @@ CREATE TABLE VidAgeGroup
 (
 Month int,
 Year int,
-ChannelID varchar(32),
-ChannelName varchar(128),
 AgeGroup varchar(128),
 Gender varchar(128),
 ViewerPercentage float
